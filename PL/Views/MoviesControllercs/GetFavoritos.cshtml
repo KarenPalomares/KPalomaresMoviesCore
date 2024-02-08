@@ -1,0 +1,37 @@
+﻿@model Movie
+<link rel="stylesheet" href="~/css/Cards.css" />
+<h1>Peliculas Populares</h1>
+@foreach (Movie movies in Model.Movies)
+{
+    <div class="movie_card">
+
+        <div class="info_section">
+
+            <div class="movie_header" id=@movies.IdMovie>
+
+
+                <img class="locandina" src=@movies.Imagen />
+                <h1>@movies.Titulo</h1>
+                <h4>Popular</h4>
+                <span class="minutes">@movies.Fecha</span>
+                <p class="type">Resumen</p>
+
+            </div>
+            <div class="movie_desc">
+                <p class="text">@movies.Resumen</p>
+            </div>
+            <div class="movie_social">
+                <ul>
+                    <li><i class="btn btn-group-vertical">Compartir</i></li>
+
+                    <a href="@Url.Action("DeleteFavoritos", "MoviesControllercs", new { IdMovie = movies.IdMovie })" class="btn btn-danger" class="bi bi-bookmark-heart">Eliminar de Favoritos</a>
+
+
+
+                </ul>
+            </div>
+
+        </div>
+        <div class="blur_back bright_back"></div>
+    </div>
+}
